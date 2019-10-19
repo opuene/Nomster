@@ -4,8 +4,11 @@
 
 @font-face {
     font-family: 'abelregular';
-    src: url('abel-regular-webfont.woff2') format('woff2'),
-         url('abel-regular-webfont.woff') format('woff');
+    src: url('abelregular-webfont.eot');
+    src: url('abelregular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('abelregular-webfont.woff') format('woff'),
+         url('abelregular-webfont.ttf') format('truetype'),
+         url('abelregular-webfont.svg#abelregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
