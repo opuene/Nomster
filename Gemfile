@@ -72,3 +72,5 @@ source 'https://rails-assets.org' do
 end
 
 gem 'jquery-rails'
+gem "geocoder"
+gem "figaro"
