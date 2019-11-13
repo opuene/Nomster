@@ -2,14 +2,7 @@
   <h1><%= @place.name %></h1>
   <i><%= @place.address %></i>
   <br/><br/>
-  <p><%= @place.description %></p>
-
-
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+  <p><%= @place.description %></p> 
 
 <% if @place.latitude.present? && @place.longitude.present? %>
      
@@ -49,11 +42,7 @@
 </div>
 
 <div class="clear"></div>
-<%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-  <%= f.input :message %>
-  <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
-  <%= f.submit "Add a comment", class: 'btn btn-primary' %>
-<% end %> 
+
 
 
 <!-- Button trigger modal -->
@@ -85,13 +74,7 @@
   </div>
 </div>
 
-<div class="col-10 offset-1">
-  <h1> class="float-left">Comments</h1>
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
-  Add a comment
-  </button>
-</div>
+
 
 <div class="clear"></div>
 
@@ -104,6 +87,27 @@
         <% end %>
         <%= comment.message %>
         <small><%= comment.user.email %></small>
+      </blockquote>
+    </div>
+  <% end %>
+</div>
+
+<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+  <%= f.input :picture, as: :file %>
+  <%= f.input :caption %>
+  <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
+<% end %>
+
+<div class="row">
+  <% @place.photos.each do |photo| %>
+     <div class="col-12 col-sm-6">
+      <blockquote>
+        <% if photo.caption.present? %>
+          <b><%= photo.caption %></b> -
+        <% end %>
+        <% if photo.picture %>
+          <%= image_tag(photo.picture.url) %>
+        <% end %>
       </blockquote>
     </div>
   <% end %>
