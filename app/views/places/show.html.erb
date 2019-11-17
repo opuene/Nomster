@@ -105,8 +105,8 @@
         <% if photo.caption.present? %>
           <b><%= photo.caption %></b> -
         <% end %>
-        <% if photo.picture %>
-          <%= image_tag(photo.picture.url) %>
+        <% if photo.picture and not photo.picture.url.nil? %>  
+          <%= image_tag (photo.picture.url) %>
         <% end %>
       </blockquote>
     </div>
